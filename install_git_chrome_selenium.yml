@@ -1,0 +1,16 @@
+---
+- hosts: slave
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+          - name: Installing chromedriver and selenium
+            script: installing_chrome.sh
+          - name: Installing needed utilities
+            apt:
+                    name:
+                            - python
+                            - git
+                            - openssh-server
+                    state: present
+                    autoclean: yes
